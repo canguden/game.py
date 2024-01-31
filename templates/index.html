@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./styles.css" /> 
+    <title>Roulette Game</title>
+</head>
+<body>
+    <h1>Roulette Game</h1>
+    <form method="post">
+        <label for="bet">Enter your bet amount:</label>
+        <input type="number" name="bet" required>
+        <button type="submit">Spin</button>
+    </form>
+    <div class="roulette-table">
+        <div class="roulette-wheel">
+            <div class="roulette-number">0</div>
+        </div>
+    </div>
+    <div class="result" id="result"></div>
+    <p>{{ result }}</p>
+    <p>{{ bankroll_status }}</p>
+
+    <script>
+
+      function displayResult(winningNumber, winningColor) {
+          var resultElement = document.getElementById("result");
+          resultElement.innerHTML = "Winning Number: " + winningNumber + "<br>Color: " + winningColor;
+          
+          var numberElement = document.querySelector(".roulette-number");
+          numberElement.textContent = winningNumber;
+          numberElement.style.color = winningColor;
+      }
+  
+
+      displayResult("{{ number }}", "{{ color }}");
+  </script>
+  
+</body>
+</html>
